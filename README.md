@@ -9,6 +9,8 @@
 [![Python](https://img.shields.io/badge/Python-3.12%2B-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 
+**Deployed website:** [https://virtual-chemist.onrender.com](https://virtual-chemist.onrender.com)
+
 <img src="./docs/virtual-chemist-banner.svg" alt="Pastel atom orbits around a molecule illustration with the message: Connect. Combine. Discover molecules." width="100%">
 
 </div>
