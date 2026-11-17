@@ -70,6 +70,9 @@ def init_db():
 
     from app.models import models  # noqa: F401  (registers models on Base)
 
+    with engine.begin() as conn:
+        conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+
     Base.metadata.create_all(bind=engine)
 
     with engine.begin() as conn:
