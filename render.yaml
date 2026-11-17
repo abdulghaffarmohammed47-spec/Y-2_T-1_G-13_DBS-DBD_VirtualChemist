@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: virtual-chemist
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: virtual-chemist-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: virtual-chemist-redis
+          property: connectionString
+      - key: OTP_DEV_MODE
+        value: "false"
+      - key: SMTP_SERVER
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+  - type: keyvalue
+    name: virtual-chemist-redis
+    plan: free
+    region: oregon
+    ipAllowList: []
+
+databases:
+  - name: virtual-chemist-db
+    plan: free
+    region: oregon
+    databaseName: chemist
+    user: chemist
